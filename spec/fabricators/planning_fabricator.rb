@@ -1,0 +1,3 @@
+Fabricator(:planning) do
+  
+end
