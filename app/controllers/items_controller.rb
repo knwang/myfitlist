@@ -6,10 +6,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
-    item = @planning.items.build(item_params)
+    @item = @planning.items.build(item_params)
 
-    if item.save
+    if @item.save
       redirect_to planning_path(@planning)
     else
       render :new

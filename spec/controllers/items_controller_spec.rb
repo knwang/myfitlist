@@ -62,9 +62,6 @@ describe ItemsController do
     before { @item_attr = Fabricate.attributes_for(:item, name: "窄距俯卧撑", duration: 20, result: 100, unit: "个")}
 
     context "with valid attributes" do
-      # let(:item) { Fabricate(:item, planning_id: planning.id) }
-      # before { @item_attr = Fabricate.attributes_for(:item, name: "窄距俯卧撑", duration: 20, result: 100, unit: "个")}
-
       it "updates attributes of the item in the database" do
         patch :update, planning_id: planning.id, id: item.id, item: @item_attr
         item.reload

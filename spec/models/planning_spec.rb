@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Planning do
+  it { should validate_numericality_of(:weight).is_greater_than(0).is_less_than_or_equal_to(200) }
   it { should have_many(:items).order("created_at ASC") }
 
   let(:planning) { Fabricate(:planning)}
