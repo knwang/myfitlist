@@ -1,6 +1,20 @@
 class PlanningsController < ApplicationController
-  before_action :set_planning
-  
+  before_action :set_planning, only: [:show, :update]
+
+  def new
+    @planning = Planning.new
+  end
+
+  def create
+    @planning = Planning.new(planning_params)
+
+    if @planning.save
+      redirect_to planning_path(@planning)
+    else
+      render :new
+    end
+  end
+
   def show
     @planning = Planning.find(params[:id])
   end

@@ -1,0 +1,8 @@
+%section.planning.container
+  .row
+    %header
+      %h2= Time.zone.today()
+    = bootstrap_form_for planning, layout: :inline do |f|
+      = f.text_field :weight, label: "体重:"
+      %span (公斤)
+      = f.submit "保存", class: "btn btn-success"

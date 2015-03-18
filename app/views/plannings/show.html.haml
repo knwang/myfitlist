@@ -1,11 +1,6 @@
 %section.planning.container
   .row
-    %header
-      %h2= Time.zone.today()
-    = bootstrap_form_for @planning, layout: :inline do |f|
-      = f.text_field :weight, label: "体重:"
-      %span (公斤)
-      = f.submit "保存", class: "btn btn-success"
+    = render 'planning', planning: @planning
     = link_to "增加项目", new_planning_item_path(@planning), class: "btn btn-success"
     - if @planning.items.count > 0
       %table.table.table-condensed
