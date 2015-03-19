@@ -6,7 +6,9 @@ class PlanningsController < ApplicationController
   end
 
   def create
+    current_user = User.find(session[:user_id]) if session && session[:user_id]
     @planning = Planning.new(planning_params)
+    @planning.user_id = current_user.id
 
     if @planning.save
       redirect_to planning_path(@planning)

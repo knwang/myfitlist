@@ -14,6 +14,9 @@ describe PlanningsController do
   end
 
   describe "POST #create" do
+    let(:user) { Fabricate(:user) }
+    before { session[:user_id] = user.id }
+
     context "with valid attributes" do
       let(:valid_planning) { Fabricate.attributes_for(:planning, weight: 100.0) }
 
@@ -21,6 +24,11 @@ describe PlanningsController do
         expect{
          post :create, planning: valid_planning
           }.to change(Planning, :count).by(1)
+      end
+
+      it "create a planning associated with the current user" do
+        post :create, planning: valid_planning
+        expect(Planning.first.user_id).to eq(user.id)
       end
 
       it "redirects to the planning show page" do
@@ -45,7 +53,7 @@ describe PlanningsController do
       end
     end
   end
-  
+
   describe "PATCH #update" do
     let(:planning) { Fabricate(:planning, weight: 60) }
     before { @planning_attr = Fabricate.attributes_for(:planning, weight: 70) }

@@ -3,6 +3,8 @@ class Planning < ActiveRecord::Base
 
   has_many :items, -> { order 'created_at ASC' }
 
+  belongs_to :user
+
   def unfinished_items
     items.where(finished: false)
   end

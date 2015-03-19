@@ -1,7 +1,7 @@
 %section.planning.container
   .row
     %header
-      %h2= Time.zone.today()
+      %h2= Date.current()
     = bootstrap_form_for planning, layout: :inline do |f|
       = f.text_field :weight, label: "体重:"
       %span (公斤)
