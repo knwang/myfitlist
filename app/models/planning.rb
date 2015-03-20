@@ -1,7 +1,7 @@
 class Planning < ActiveRecord::Base
   validates_numericality_of :weight, greater_than: 0, less_than_or_equal_to: 200
 
-  has_many :items, -> { order 'created_at ASC' }
+  has_many :items
 
   belongs_to :user
 

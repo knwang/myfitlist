@@ -15,11 +15,7 @@ class User < ActiveRecord::Base
 
   def today_planning
     today_planning = plannings.where(
-        created_at: Date.current().beginning_of_day()..Date.current().end_of_day())
-    if today_planning.count == 1
-      return today_planning[0]
-    else
-      return nil
-    end
+        created_at: Date.current.beginning_of_day..Date.current.end_of_day)
+    return today_planning.first if today_planning.count == 1
   end
 end
