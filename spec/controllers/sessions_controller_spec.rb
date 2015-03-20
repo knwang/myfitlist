@@ -30,8 +30,29 @@ describe SessionsController do
     end
 
     context "with the invalid credentials" do
-      it "doesn't put the sign in user in the session"
-      it "re-renders the :new template"
+      before { post :create, email: valid_user.email, password: valid_user.password + "123" }
+
+      it "doesn't put the sign in user in the session" do
+        expect(session[:user_id]).to be_nil
+      end
+
+      it "re-renders the :new template" do
+        expect(response).to render_template :new
+      end
+    end
+  end
+
+  describe "GET #destroy" do
+    before { session[:user_id] = Fabricate(:user).id }
+
+    it "clears the session for the user" do
+      get :destroy
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "redirects to the root path" do
+      get :destroy
+      expect(response).to redirect_to(root_path)
     end
   end
 end

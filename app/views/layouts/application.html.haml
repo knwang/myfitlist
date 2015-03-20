@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title DoList
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' =>  true
+    = javascript_include_tag 'application', 'data-turbolinks-track' =>  true
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'shared/header'
+      .container
+        .row
+          = render 'shared/messages'
+          = yield
+    %footer
+      &copy 2015 MyFitList
