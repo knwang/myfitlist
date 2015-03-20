@@ -2,9 +2,23 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "GET #new" do
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template :new
+    context "for unauthenticated user" do
+      it "renders the :new template" do
+        get :new
+        expect(response).to render_template :new
+      end
+    end
+    
+    context "for authenticated user" do
+      before { sign_in }
+
+      it_behaves_like "show_new_planning" do
+        let(:action) { get :new }
+      end
+
+      it_behaves_like "show_user_today_planning" do
+        let(:action) { get :new }
+      end
     end
   end
 

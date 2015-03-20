@@ -1,4 +1,5 @@
 class PlanningsController < ApplicationController
+  before_action :require_sign_in
   before_action :set_planning, only: [:show, :update]
 
   def new
@@ -18,7 +19,7 @@ class PlanningsController < ApplicationController
   end
 
   def show
-    @planning = Planning.find(params[:id])
+    
   end
 
   def update
