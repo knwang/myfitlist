@@ -21,9 +21,14 @@ describe UsersController do
         expect{ post :create, user: valid_user }.to change(User, :count).by(1)
       end
 
-      it "redirects to the root path" do
+      it "sets success message" do
         post :create, user: valid_user
-        expect(response).to redirect_to(root_path)
+        expect(flash[:success]).not_to be_blank
+      end
+
+      it "redirects to the sign in path" do
+        post :create, user: valid_user
+        expect(response).to redirect_to(sign_in_path)
       end
     end
 

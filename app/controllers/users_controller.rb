@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path
+      flash[:success] = "恭喜您，注册成功，请登录！"
+      redirect_to sign_in_path
     else
       render :new
     end
