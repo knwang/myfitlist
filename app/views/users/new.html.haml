@@ -1,16 +1,14 @@
-%section.register.container
-  .row
-    .col-sm-10.col-sm-offset-1
-      = bootstrap_form_for @user, html: { class: 'form-horizontal' } do |f|
-        %header
-          %h1 注册
-        %fieldset
-          .form-group
-            = f.email_field :email, label: "Email:"
-          .form-group
-            = f.password_field :password, label: "密码："
-          .form-group
-            = f.text_field :full_name, label: "全名："
-        %fieldset.actions.control-group.col-sm-offset-2
-          .controls
-            = f.submit '注册并提交信息', class: 'btn btn-default'
+.well.well-sm
+  = bootstrap_form_for(@user, layout: :horizontal, label_col: 'col-sm-2', control_col: 'col-sm-8') do |f|
+    %header
+      %h2 注册
+    %fieldset
+      .form-group
+        = f.email_field :email, label: "Email:"
+      .form-group
+        = f.password_field :password, label: "密码："
+      .form-group
+        = f.text_field :full_name, label: "全名："
+    %fieldset.actions.control-group.col-sm-offset-2
+      .controls
+        = f.submit '注册并提交信息', class: 'btn btn-default'

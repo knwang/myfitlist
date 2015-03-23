@@ -1,7 +1,6 @@
-%section.planning.container
-  .row
-    %header
-      %h2= Date.current
+.page-header
+  %h2= Date.current
+  .well
     = bootstrap_form_for planning, layout: :inline do |f|
       = f.text_field :weight, label: "体重:"
       %span (公斤)

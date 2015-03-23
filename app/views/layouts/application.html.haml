@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title DoList
+    %title 我的健身清单
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' =>  true
     = javascript_include_tag 'application', 'data-turbolinks-track' =>  true
     = csrf_meta_tags
@@ -13,4 +13,4 @@
           = render 'shared/messages'
           = yield
     %footer
-      &copy 2015 MyFitList
+      .text-center &copy 2015 MyFitList

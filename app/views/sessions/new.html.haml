@@ -1,13 +1,6 @@
-%section.sign_in.container
-  .row
-    .col-sm-10.col-sm-offset-1
-      = bootstrap_form_tag url: '/sign_in', html: { class: 'form-horizontal' }  do |f|
-        %header
-          %h1 登录
-        %fieldset
-          .form-group
-            = f.email_field :email, label: "Email:"
-          .form-group
-            = f.password_field :password, label: "密码："
-        %fieldset.form-group.action
-          = f.submit '登录', class: 'btn btn-default'
+= bootstrap_form_tag(url: '/sign_in', layout: :horizontal, label_col: 'col-sm-0', control_col: 'col-sm-4 col-sm-offset-4') do |f|
+  %p.text-center.title 登录
+  = f.email_field :email, hide_label: true, placeholder: '邮箱地址'
+  = f.password_field :password, hide_label: true, placeholder: '密码'
+  = f.form_group do
+    = f.submit '登录', class: 'btn btn-lg btn-primary btn-block'
