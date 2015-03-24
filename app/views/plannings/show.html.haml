@@ -28,7 +28,7 @@
               %td
                 = text_field_tag "item[unit]", item.unit
               %td
-                = button_tag do
+                = button_tag id: "item_#{item.id}" do
                   %i.glyphicon.glyphicon-record
               %td
                 = link_to planning_item_path(@planning, item), method: :delete do
