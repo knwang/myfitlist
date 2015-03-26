@@ -1,4 +1,4 @@
-= render 'plannings/planning', planning: @planning
+= render 'plan', planning: @planning
 .add-item-button
   = link_to "增加项目", new_planning_item_path(@planning), class: "btn btn-success"
 - if @planning.items.count > 0
